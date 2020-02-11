@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>DevExtreme with webpack and Vue example</title>
+</head>
+
+<body>
+  <div class="container">
+    <h1>DevExtreme with webpack and Vue example</h1>
+    <div id="app">
+      <dx-text-box :value.sync="temp">
+        <dx-validator>
+          <dx-validation-rule type="required" message="reuired"></dx-validation-rule>
+        </dx-validator>
+      </dx-text-box>
+    </div>
+  </div>
+  <script src="https://unpkg.com/vue"></script>
+  <script src="js/app/bundle.js"></script>
+  <script>
+    new Vue({
+      el: "#app",
+      data: {
+        temp: "value"
+      }
+    });
+  </script>
+
+
+
+</body>
+
+</html>
