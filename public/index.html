@@ -4,32 +4,36 @@
 <head>
   <meta charset="utf-8">
   <title>DevExtreme with webpack and Vue example</title>
+  <link rel="stylesheet" href="https://cdn3.devexpress.com/jslib/19.2.6/css/dx.common.css">
+  <link rel="stylesheet" href="https://cdn3.devexpress.com/jslib/19.2.6/css/dx.light.css">
 </head>
 
 <body>
   <div class="container">
     <h1>DevExtreme with webpack and Vue example</h1>
     <div id="app">
-      <dx-text-box :value.sync="temp" ref="component">
-        <dx-validator ref="validationRules">
-          <dx-validation-rule type="required" message="required"></dx-validation-rule>
-          <dx-validation-rule type="email" message="it should be an email"></dx-validation-rule>
-        </dx-validator>
-      </dx-text-box>
+      <dx-button text="Hide/ UnHide Area" @click="show=!show"></dx-button>
+      <div v-if="show">
+        Some other area to hide
+        <dx-data-grid :data-source="dataSource">
+          <dx-column data-field="CompanyName"></dx-column>
+          <dx-column data-field="Address"></dx-column>
+          <dx-column data-field="City"></dx-column>
+          <dx-column data-field="Website"></dx-column>
+        </dx-data-grid>
+      </div>
     </div>
   </div>
   <script src="https://unpkg.com/vue"></script>
+  <script src="data.js"></script>
   <script src="js/app/bundle.js"></script>
   <script>
+
     new Vue({
       el: "#app",
       data: {
-        temp: "value"
-      },
-      mounted: function () {
-        var validator = this.$refs["validationRules"];
-        var component = this.$refs["component"];
-        validator.attachTo(component.$el);
+        dataSource: customers,
+        show: true
       }
     });
   </script>
