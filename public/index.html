@@ -14,13 +14,24 @@
     <div id="app">
       <dx-button text="Hide/ UnHide Area" @click="show=!show"></dx-button>
       <div v-if="show">
-        Some other area to hide
+        Here is a list
+        <dx-list :items="items">
+          <div slot="item" slot-scope="data">
+            <i>{{data}}</i>
+          </div>
+        </dx-list>
+
+        Here is a Data grid
         <dx-data-grid :data-source="dataSource">
-          <dx-column data-field="CompanyName"></dx-column>
+          <dx-column data-field="CompanyName" cell-template="cell-city"></dx-column>
           <dx-column data-field="Address"></dx-column>
           <dx-column data-field="City"></dx-column>
           <dx-column data-field="Website"></dx-column>
+          <div slot="cell-city" slot-scope="{ data }">
+            <div>{{ data.data}}</div>
+          </div>
         </dx-data-grid>
+
       </div>
     </div>
   </div>
@@ -33,6 +44,7 @@
       el: "#app",
       data: {
         dataSource: customers,
+        items: [1, 2, 3, 4, 5, 6, 7],
         show: true
       }
     });
