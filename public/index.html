@@ -10,9 +10,10 @@
   <div class="container">
     <h1>DevExtreme with webpack and Vue example</h1>
     <div id="app">
-      <dx-text-box :value.sync="temp">
-        <dx-validator>
-          <dx-validation-rule type="required" message="reuired"></dx-validation-rule>
+      <dx-text-box :value.sync="temp" ref="component">
+        <dx-validator ref="validationRules">
+          <dx-validation-rule type="required" message="required"></dx-validation-rule>
+          <dx-validation-rule type="email" message="it should be an email"></dx-validation-rule>
         </dx-validator>
       </dx-text-box>
     </div>
@@ -24,6 +25,11 @@
       el: "#app",
       data: {
         temp: "value"
+      },
+      mounted: function () {
+        var validator = this.$refs["validationRules"];
+        var component = this.$refs["component"];
+        validator.attachTo(component.$el);
       }
     });
   </script>
