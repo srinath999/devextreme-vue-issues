@@ -15,12 +15,12 @@
     "url-loader": "^1.0.1",
     "vue-loader": "^15.0.10",
     "webpack": "^4.8.3",
-    "webpack-cli": "^3.1.1",
+    "webpack-cli": "^3.3.11",
     "webpack-dev-server": "^3.1.4"
   },
   "dependencies": {
-    "devextreme": "^19.2.3",
-    "devextreme-vue": "^19.2.3",
+    "devextreme": "^19.2",
+    "devextreme-vue": "^19.2",
     "vue": "^2.5.16",
     "vue-template-compiler": "^2.5.16"
   }
