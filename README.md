@@ -5,5 +5,4 @@ Generate Bundle using `npm run build`
 
 Run and use the bundle using `npm run serve`
 
-On Change and focusout find the error as in `Issue Video.mp4` in the repo
-
+The drop from one list to another is not working rather replaces the item at its starting point

@@ -9,31 +9,55 @@
 </head>
 
 <body>
-  <div class="container">
-    <h1>DevExtreme with webpack and Vue example</h1>
-    <div id="app">
-      <dx-button text="Hide/ UnHide Area" @click="show=!show"></dx-button>
-      <div v-if="show">
-        Some other area to hide
-        <dx-data-grid :data-source="dataSource">
-          <dx-column data-field="CompanyName"></dx-column>
-          <dx-column data-field="Address"></dx-column>
-          <dx-column data-field="City"></dx-column>
-          <dx-column data-field="Website"></dx-column>
-        </dx-data-grid>
-      </div>
-    </div>
-  </div>
+  <style>
+    .widget-container {
+      display: flex;
+    }
+
+    .widget-container>* {
+      height: 400px;
+      width: 50%;
+      padding: 10px;
+    }
+  </style>
   <script src="https://unpkg.com/vue"></script>
   <script src="data.js"></script>
   <script src="js/app/bundle.js"></script>
+
+  <div class="container">
+    <h1>DevExtreme with webpack and Vue example</h1>
+    <div id="app">
+      <div class="widget-container">
+        <dx-list :items="available" key-expr="ID" display-expr="CompanyName" :repaint-changes-only="true" key-expr="id">
+          <dx-item-dragging :data="available" :allow-reordering="true" :on-drag-start="onDragStart" :on-add="onAdd"
+            :on-remove="onRemove" group="book"></dx-item-dragging>
+        </dx-list>
+        <dx-list :items="unavailable" key-expr="ID" display-expr="CompanyName" :repaint-changes-only="true"
+          key-expr="id">
+          <dx-item-dragging :data="unavailable" :allow-reordering="true" :on-drag-start="onDragStart" :on-add="onAdd"
+            :on-remove="onRemove" group="book"></dx-item-dragging>
+        </dx-list>
+      </div>
+    </div>
+  </div>
   <script>
 
     new Vue({
       el: "#app",
       data: {
-        dataSource: customers,
-        show: true
+        available: available,
+        unavailable: unavailable
+      },
+      methods: {
+        onDragStart(e) {
+          e.itemData = e.fromData[e.fromIndex];
+        },
+        onAdd(e) {
+          e.toData.splice(e.toIndex, 0, e.itemData);
+        },
+        onRemove(e) {
+          e.fromData.splice(e.fromIndex, 1);
+        }
       }
     });
   </script>

@@ -1,4 +1,4 @@
-var customers = [{
+var available = [{
     'ID': 1,
     'CompanyName': 'Super Mart of the West',
     'Address': '702 SW 8th Street',
@@ -88,7 +88,9 @@ var customers = [{
     'Phone': '(612) 291-1000',
     'Fax': '(612) 291-2001',
     'Website': 'http://www.nowebsitepremierbuy.com'
-}, {
+},]
+
+var unavailable = [{
     'ID': 10,
     'CompanyName': 'ElectrixMax',
     'Address': '263 Shuman Blvd',
