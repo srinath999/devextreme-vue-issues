@@ -20,11 +20,11 @@ module.exports = {
   module: {
     rules: [
       {
-          test: /\.vue$/,
-          loader: 'vue-loader',
-          options: {
-              esModule: true
-          }
+        test: /\.vue$/,
+        loader: 'vue-loader',
+        options: {
+          esModule: true
+        }
       },
       {
         test: /\.css$/,
@@ -33,8 +33,8 @@ module.exports = {
           { loader: "css-loader" }
         ]
       },
-      { 
-        test: /\.(eot|svg|ttf|woff|woff2)$/, 
+      {
+        test: /\.(eot|svg|ttf|woff|woff2)$/,
         use: "url-loader?name=[name].[ext]"
       }
     ]
