@@ -10,18 +10,18 @@
   "author": "DevExpress",
   "license": "MIT",
   "devDependencies": {
-    "css-loader": "^0.28.11",
-    "style-loader": "^0.21.0",
-    "url-loader": "^1.0.1",
-    "vue-loader": "^15.0.10",
-    "webpack": "^4.8.3",
-    "webpack-cli": "^3.1.1",
-    "webpack-dev-server": "^3.1.4"
+    "css-loader": "^4.1.1",
+    "style-loader": "^1.2.1",
+    "url-loader": "^4.1.0",
+    "vue-loader": "^15.9.3",
+    "webpack": "^4.44.0",
+    "webpack-cli": "^3.3.12",
+    "webpack-dev-server": "^3.11.0"
   },
   "dependencies": {
-    "devextreme": "^19.2.8-build-20114-0313",
-    "devextreme-vue": "^19.2.8-build-20114-0313",
-    "vue": "^2.5.16",
-    "vue-template-compiler": "^2.5.16"
+    "devextreme": "^19.2.8",
+    "devextreme-vue": "^19.2.8",
+    "vue": "^2.6.11",
+    "vue-template-compiler": "^2.6.11"
   }
 }

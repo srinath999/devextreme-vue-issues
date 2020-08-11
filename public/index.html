@@ -6,21 +6,33 @@
   <title>DevExtreme with webpack and Vue example</title>
   <link rel="stylesheet" href="https://cdn3.devexpress.com/jslib/19.2.6/css/dx.common.css">
   <link rel="stylesheet" href="https://cdn3.devexpress.com/jslib/19.2.6/css/dx.light.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
 </head>
 
 <body>
-  <div class="container">
+  <div>
     <h1>DevExtreme with webpack and Vue example</h1>
     <div id="app">
-      <dx-button text="Hide/ UnHide Area" @click="show=!show"></dx-button>
-      <div v-if="show">
-        Some other area to hide
-        <dx-data-grid :data-source="dataSource">
-          <dx-column data-field="CompanyName"></dx-column>
-          <dx-column data-field="Address"></dx-column>
-          <dx-column data-field="City"></dx-column>
-          <dx-column data-field="Website"></dx-column>
-        </dx-data-grid>
+      <div class="container">
+        <dx-button text="Hide/Show" @click="toggleGrid"></dx-button>
+      </div>
+      <div class="row container-fluid">
+        <div class="col-3">
+          <dx-tree-view id="treeView" key-expr="ID" display-expr="Phone" :data-source="customers" parent-id-expr='ParentId'>
+          </dx-tree-view>
+          <dx-context-menu :data-source="menuItems" :width="200" :target="'#treeView'"></dx-context-menu>
+        </div>
+        <div class="col-9" v-show="show">
+          <dx-data-grid :data-source="dataSource" :remote-operations="{ paging : true,filtering: true, sorting : true }"
+            @option-changed="onOptionChanged" :on-context-menu-preparing="getContextMenu">
+            <dx-header-filter :visible="true"></dx-header-filter>
+            <dx-selection :allow-select-all="true" select-all-mode="page" show-check-boxes-mode="onClick"
+              mode="multiple"></dx-selection>
+            <dx-pager :visible="true" :show-page-size-selector="true" :allowed-page-sizes="[5,8,10]" :show-info="true">
+            </dx-pager>
+            <dx-scrolling mode="standard"></dx-scrolling>
+          </dx-data-grid>
+        </div>
       </div>
     </div>
   </div>
@@ -32,12 +44,52 @@
     new Vue({
       el: "#app",
       data: {
-        dataSource: customers,
-        show: true
+        dataSource: new DevExpress.data.DataSource({
+          store: new DevExpress.data.CustomStore({
+            load: function (loadOptions) {
+              //12 rows
+              console.log('datasource hit')
+              return new Promise(function (resolve, reject) {
+                setTimeout(function () {
+                  resolve({ data: customers.slice(0, loadOptions.take), totalCount: 1000 });
+                }, 1000)
+              });
+            }
+          })
+        }),
+        customers: customers,
+        show: true,
+        menuItems: [{
+          text: 'Option 1',
+          onItemClick: function (e) {
+            console.log('clicked with', e);
+          }
+        }, {
+          text: 'Option 2',
+          onItemClick: function (e) {
+            console.log('clicked with', e);
+          }
+        }]
+      },
+      methods: {
+        onOptionChanged: function (e) {
+          console.log('option Change hit with', e);
+        },
+        getContextMenu: function (e) {
+          e.items = this.menuItems;
+        },
+        toggleGrid: function () {
+          this.show = !this.show;
+        }
       }
     });
   </script>
-
+  <style>
+    .container {
+      height: 100%;
+      width: 100%;
+    }
+  </style>
 
 
 </body>

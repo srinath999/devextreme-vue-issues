@@ -7,6 +7,7 @@ var customers = [{
     'Zipcode': 72716,
     'Phone': '(800) 555-2797',
     'Fax': '(800) 555-2171',
+    'ParentId': 0,
     'Website': 'http://www.nowebsitesupermart.com'
 }, {
     'ID': 2,
@@ -17,6 +18,7 @@ var customers = [{
     'Zipcode': 30339,
     'Phone': '(800) 595-3232',
     'Fax': '(800) 595-3231',
+    'ParentId': 1,
     'Website': 'http://www.nowebsitedepot.com'
 }, {
     'ID': 3,
@@ -27,6 +29,7 @@ var customers = [{
     'Zipcode': 55403,
     'Phone': '(612) 304-6073',
     'Fax': '(612) 304-6074',
+    'ParentId': 0,
     'Website': 'http://www.nowebsitemusic.com'
 }, {
     'ID': 4,
@@ -37,6 +40,7 @@ var customers = [{
     'Zipcode': 98027,
     'Phone': '(800) 955-2292',
     'Fax': '(800) 955-2293',
+    'ParentId': 1,
     'Website': 'http://www.nowebsitetomsclub.com'
 }, {
     'ID': 5,
@@ -47,6 +51,7 @@ var customers = [{
     'Zipcode': 60179,
     'Phone': '(847) 286-2500',
     'Fax': '(847) 286-2501',
+    'ParentId': 3,
     'Website': 'http://www.nowebsiteemart.com'
 }, {
     'ID': 6,
@@ -57,6 +62,7 @@ var customers = [{
     'Zipcode': 60015,
     'Phone': '(847) 940-2500',
     'Fax': '(847) 940-2501',
+    'ParentId': 3,
     'Website': 'http://www.nowebsitewalters.com'
 }, {
     'ID': 7,
@@ -67,6 +73,7 @@ var customers = [{
     'Zipcode': 76102,
     'Phone': '(817) 820-0741',
     'Fax': '(817) 820-0742',
+    'ParentId': 3,
     'Website': 'http://www.nowebsiteshack.com'
 }, {
     'ID': 8,
@@ -77,6 +84,7 @@ var customers = [{
     'Zipcode': 60523,
     'Phone': '(800) 955-2929',
     'Fax': '(800) 955-9392',
+    'ParentId': 3,
     'Website': 'http://www.nowebsitecircuittown.com'
 }, {
     'ID': 9,
@@ -87,6 +95,7 @@ var customers = [{
     'Zipcode': 55423,
     'Phone': '(612) 291-1000',
     'Fax': '(612) 291-2001',
+    'ParentId': 3,
     'Website': 'http://www.nowebsitepremierbuy.com'
 }, {
     'ID': 10,
@@ -107,6 +116,7 @@ var customers = [{
     'Zipcode': 75270,
     'Phone': '(214) 854-3000',
     'Fax': '(214) 854-3001',
+    'ParentId': 10,
     'Website': 'http://www.nowebsitevideoemporium.com'
 }, {
     'ID': 12,
@@ -117,5 +127,6 @@ var customers = [{
     'Zipcode': 28117,
     'Phone': '(800) 445-6937',
     'Fax': '(800) 445-6938',
+    'ParentId': 11,
     'Website': 'http://www.nowebsitescreenshop.com'
 }];
